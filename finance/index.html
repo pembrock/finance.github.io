@@ -5,16 +5,19 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-
-    <meta http-equiv='cache-control' content='no-cache'> 
-    <meta http-equiv='expires' content='0'> 
-    <meta http-equiv='pragma' content='no-cache'>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
   <body>
     <div class="testbox">
-      <form action="/">
+      <form id="form">
         <div class="banner">
           <h1>Учет финансов</h1>
+        </div>
+        <div class="item">
+          <p>Пользователь</p>
+          <div id="username">
+            %username%
+          </div>
         </div>
         <div class="item">
           <p>Тип</p>
@@ -27,7 +30,7 @@
         </div>
         <div class="item">
           <p>Сумма</p>
-          <input type="text" name="amount"/>
+          <input type="text" name="amount" id="amount" required/>
         </div>
         <div class="item">
           <p>Дата</p>
@@ -36,16 +39,31 @@
         </div>
         <div class="item">
           <p>Описание</p>
-          <textarea rows="3" name="description"></textarea>
+          <textarea rows="3" name="description" required></textarea>
         </div>
         <div class="item">
           <p>Категория</p>
-          <input type="text" name="category"/>
+          <input type="text" name="category" required/>
         </div>
         <div class="btn-block">
-          <button type="submit" href="/">Добавить</button>
+          <button type="submit" href="/" id="add">Добавить</button>
         </div>
       </form>
     </div>
   </body>
+  <script>
+    let tg = window.Telegram.WebApp;
+    let username = tg.initDataUnsafe.user.first_name;
+    let add_btn = document.getElementById("add");
+
+    window.onload = function() {
+      document.getElementById("username").innerText(username);
+    }
+
+    add_btn.addEventListener("click", () => {
+      return;
+    });
+
+    Telegram.WebApp.expand();
+  </script>
 </html>
