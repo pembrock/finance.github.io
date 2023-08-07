@@ -1,3 +1,11 @@
+body{
+	color: var(--tg-theme-text-color);
+	background: var(--tg-theme-bg-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 18px;
+}
 /* Style inputs, select elements and textareas */
 input[type=text], input[type=number], select, textarea{
     width: 100%;
