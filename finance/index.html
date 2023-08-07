@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Учет финансов</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -8,57 +9,60 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
   <body>
-    <div class="testbox">
-      <form id="form">
-        <div class="banner">
-          <h1>Учет финансов</h1>
-        </div>
-        <div class="item">
-          <p>Пользователь</p>
-          <div id="username">
-            %username%
+    <div class="container">
+      <form>
+        <div class="row">
+          <div class="col-25">
+            <label for="country">Тип</label>
           </div>
-        </div>
-        <div class="item">
-          <p>Тип</p>
-          <div class="city-item">
-            <select>
-              <option value="1">Доход</option>
-              <option value="2" selected>Расход</option>
+          <div class="col-75">
+            <select id="type" name="type">
+              <option value="australia">Расход</option>
+              <option value="canada">Доход</option>
             </select>
           </div>
         </div>
-        <div class="item">
-          <p>Сумма</p>
-          <input type="text" name="amount" id="amount" required/>
+        <div class="row">
+          <div class="col-25">
+            <label for="amount">Сумма</label>
+          </div>
+          <div class="col-75">
+            <input type="number" id="amount" name="amount" placeholder="Сумма..." required>
+          </div>
         </div>
-        <div class="item">
-          <p>Дата</p>
-          <input type="date" name="date" required/>
-          <i class="fas fa-calendar-alt"></i>
+        <div class="row">
+          <div class="col-25">
+            <label for="date">Дата</label>
+          </div>
+          <div class="col-75">
+            <input type="date" name="date" required/>
+          </div>
         </div>
-        <div class="item">
-          <p>Описание</p>
-          <textarea rows="3" name="description" required></textarea>
+        <div class="row">
+          <div class="col-25">
+            <label for="description">Описание</label>
+          </div>
+          <div class="col-75">
+            <textarea id="description" name="description" placeholder="Описание.." style="height:200px" required></textarea>
+          </div>
         </div>
-        <div class="item">
-          <p>Категория</p>
-          <input type="text" name="category" required/>
+        <div class="row">
+          <div class="col-25">
+            <label for="category">Статья</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="category" name="category" placeholder="Статья..." required>
+          </div>
         </div>
-        <div class="btn-block">
-          <button type="submit" href="/" id="add">Добавить</button>
+        <div class="row">
+          <input type="submit" id="add" value="Добавить">
         </div>
       </form>
     </div>
   </body>
   <script>
     let tg = window.Telegram.WebApp;
-    let username = tg.initDataUnsafe.user.first_name;
     let add_btn = document.getElementById("add");
-
-    window.onload = function() {
-      document.getElementById("username").innerText(username);
-    }
 
     add_btn.addEventListener("click", () => {
       return;
