@@ -64,6 +64,32 @@ input[type=text], input[type=number], select, textarea{
   #add {
     margin-top: 10px;
   }
+
+  .banner {
+    position: relative;
+    height: 210px;
+    background-image: url("/uploads/media/default/0001/01/a3df023f124a8bec3b213347404fe0a7318161de.jpeg");  
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    }
+    .banner::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5); 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    }
+
+    h1 {
+        position: absolute;
+        margin: 0;
+        font-size: 32px;
+        color: #fff;
+        z-index: 2;
+        }
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 600px) {
